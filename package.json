@@ -1,0 +1,27 @@
+{
+  "name": "library-management-system",
+  "version": "1.0.0",
+  "description": "this is a library management API Backend for the management of user and book",
+  "homepage": "https://github.com/pankaj2022002/library-management-system#readme",
+  "bugs": {
+    "url": "https://github.com/pankaj2022002/library-management-system/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pankaj2022002/library-management-system.git"
+  },
+  "license": "ISC",
+  "author": "pankaj",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js",
+    "dev":"nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
