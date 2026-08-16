@@ -1,21 +1,42 @@
-const express=require('express')
+// Import Express framework
+const express = require('express')
 
-const app=express()
+// // Import data from JSON files
+// const {users} = require('./data/users.json')
+// const {books} = require('./data/books.json')
 
-const port=8001
+//import routes for users and books
+const userRoutes = require('./routes/users')
+const bookRoutes = require('./routes/books')
 
-app.get('/',(req,res)=>{
-    res.status(200).json({
-        massage:"Home page"
-    })
+// Create an instance of the Express application
+const app = express()
+
+// Middleware: Parse incoming JSON requests
+app.use(express.json()); 
+
+// Define server port
+const port = 8081
+
+// Define a root route for the API
+app.get('/', (req, res) => {
+    res.send('Welcome to the Library Management System API');
 })
 
+
+// Use imported routes for handling user and book-related requests
+app.use('/users',userRoutes)
+app.use('/books',bookRoutes)
+
+
+// Catch-all route for unmatched requests (currently disabled)
 // app.all(/.*/, (req, res) => {
 //     res.status(500).json({
 //         message: "NOT built yet"
 //     });
 // });
 
-app.listen(port,()=>{
+// Start the Express server and listen on the specified port
+app.listen(port, () => {
     console.log(`server run on port http://localhost:${port}`)
 })
