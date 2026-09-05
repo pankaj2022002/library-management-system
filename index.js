@@ -1,6 +1,18 @@
 // Import Express framework
 const express = require('express')
 
+//import dotenv
+const dotenv = require("dotenv");
+
+dotenv.config();
+
+//import dabase connection
+const DbConnection=require('./databaseConnection')
+
+
+const dns = require("dns");
+
+dns.setServers(['8.8.8.8'])
 // // Import data from JSON files
 // const {users} = require('./data/users.json')
 // const {books} = require('./data/books.json')
@@ -37,6 +49,16 @@ app.use('/books',bookRoutes)
 // });
 
 // Start the Express server and listen on the specified port
-app.listen(port, () => {
-    console.log(`server run on port http://localhost:${port}`)
-})
+async function startServer() {
+    try {
+        await DbConnection();
+        app.listen(port, () => {
+            console.log(`server run on port http://localhost:${port}`)
+        });
+    } catch (error) {
+        console.error('MongoDB connection failed:', error.message);
+        process.exitCode = 1;
+    }
+}
+
+startServer();
