@@ -54,3 +54,20 @@ npm i express
 npm i nodemon --save-dev
 
 npm run dev
+
+# install a mongoose
+npm i mongoose
+
+# install a mongoDB
+npm install mongodb
+
+
+# install env 
+npm i dotenv
+
+## MVC Architecture
+    >> M: Model (Structure of MongoDb collection)
+    >> V: View (Frontend)
+    >> C: Controllers (Brain/Logic of a route)
+
+### DTO (data transfer file)
